@@ -169,7 +169,7 @@ icbc-fraude-prevencion/
 
 ---
 
-## 📊 KPIs del Sistema
+## KPIs del Sistema
 
 | KPI | Descripción | Fórmula |
 |---|---|---|
