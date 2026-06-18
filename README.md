@@ -1,4 +1,4 @@
-# ICBC — Sistema de Prevención de Fraudes End-to-End
+# ICBC - Sistema de Prevención de Fraudes End-to-End
 
 > **Proyecto de portfolio profesional** que simula un entorno bancario real de prevención de fraudes,  
 > cubriendo desde la ingesta de datos transaccionales hasta la operación de un motor de riesgo y su visualización ejecutiva.
@@ -65,18 +65,18 @@ Diseñar e implementar un sistema de monitoreo y prevención de fraudes transacc
 
 ---
 
-## Motor de Riesgo — Lógica de Decisión
+## Motor de Riesgo - Lógica de Decisión
 
 El módulo `src/risk_engine.py` simula las tres capas operativas de plataformas como Kount y Thales:
 
-### Capa 1 — Data Enrichment (Atributos Dinámicos)
+### Capa 1 - Data Enrichment (Atributos Dinámicos)
 Calcula en tiempo real variables contextuales sobre la transacción entrante:
 - Conteo de transacciones del usuario en los últimos 10 / 30 / 60 minutos
 - Z-score del monto respecto al perfil histórico del usuario
 - Coincidencia de dispositivo con huella histórica (`dim_dispositivos_huella`)
 - Detección de IP/geolocalización anómala
 
-### Capa 2 — Decision Engine (ABM de Reglas)
+### Capa 2 - Decision Engine (ABM de Reglas)
 Matriz de reglas configurables en `config/rules.json`:
 
 | ID Regla | Condición | Score asignado |
@@ -87,7 +87,7 @@ Matriz de reglas configurables en `config/rules.json`:
 | R004 | País/IP inconsistente con perfil histórico | +45 pts |
 | R005 | Primer uso de tarjeta en comercio de alto riesgo | +30 pts |
 
-### Capa 3 — Orquestación (Resolución Final)
+### Capa 3 - Orquestación (Resolución Final)
 
 ```
 Score < 30   →  ✅ APPROVE   — Transacción liberada
@@ -134,21 +134,21 @@ icbc-fraude-prevencion/
 
 ---
 
-## Plan de Ejecución — Hitos
+## Plan de Ejecución - Hitos
 
-### Fase 0 — Arquitectura y Planificación
+### Fase 0 - Arquitectura y Planificación
 -  Definición de stack tecnológico
 -  Diseño de arquitectura del sistema
 -  Estructura del repositorio
 -  Documento de planificación (Notion + README)
 
-### Fase 1 — SQL Server & Modelo de Datos
+### Fase 1 - SQL Server & Modelo de Datos
 - [ ] Scripts DDL: `fact_transacciones`, `dim_perfil_usuarios_historico`, `dim_dispositivos_huella`
 - [ ] Vista analítica: `vista_alertas_monitoreo`
 - [ ] Queries avanzadas: Z-score con ventanas móviles (`OVER PARTITION BY`)
-- [x] Validación de ingesta — implementada via SQLAlchemy `to_sql()` como alternativa programática al BULK INSERT nativo, permitiendo control de tipos de datos y transformaciones previas a la carga. Decisión técnica documentada.
+- [ ] Validación de ingesta — implementada via SQLAlchemy `to_sql()` como alternativa programática al BULK INSERT nativo, permitiendo control de tipos de datos y transformaciones previas a la carga. Decisión técnica documentada.
 
-### Fase 2 — Generación de Datos y Motor de Riesgo
+### Fase 2 - Generación de Datos y Motor de Riesgo
 - [ ] `data_generator.py`: transacciones sintéticas con Faker (tarjetas, DEBIN, billeteras)
 - [ ] `etl_pipeline.py`: limpieza y carga a SQL Server vía `sqlalchemy`
 - [ ] `risk_engine.py`: implementación de las 3 capas del motor
@@ -156,13 +156,13 @@ icbc-fraude-prevencion/
 - [ ] `01_EDA_fraude.ipynb`: análisis exploratorio completo
 - [ ] `02_motor_reglas.ipynb`: prototipado y validación del motor
 
-### Fase 3 — Dashboard Power BI
+### Fase 3 - Dashboard Power BI
 - [ ] Conexión directa a `vista_alertas_monitoreo` en SQL Server
 - [ ] KPIs: Tasa de Falsos Positivos (FPR), Tasa de Falsos Negativos (FNR)
 - [ ] Panel de alertas en tiempo real (REVIEW / DECLINE)
 - [ ] Análisis de monto financiero salvado por canal
 
-### Fase 4 — Cierre y Presentación
+### Fase 4 - Cierre y Presentación
 - [ ] README final pulido con capturas del dashboard
 - [ ] Sincronización Notion → GitHub
 - [ ] Revisión de documentación técnica (`docs/`)
@@ -181,7 +181,7 @@ icbc-fraude-prevencion/
 
 ---
 
-## Modelo de Datos — Tablas Principales
+## Modelo de Datos - Tablas Principales
 
 ### `fact_transacciones`
 Registro continuo de todas las transacciones evaluadas por el motor.
@@ -205,7 +205,7 @@ Registro continuo de todas las transacciones evaluadas por el motor.
 
 ## 👤 Autor
 
-**Gustavo** — Data Analyst / Data Engineer  
+**Alberto Gustavo Estigarribia** - Data Analyst / Data Engineer  
 📍 Buenos Aires, Argentina  
 🔗 [LinkedIn](#) · [GitHub](#)
 
