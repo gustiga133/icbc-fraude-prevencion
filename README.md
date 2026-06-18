@@ -146,7 +146,7 @@ icbc-fraude-prevencion/
 - [ ] Scripts DDL: `fact_transacciones`, `dim_perfil_usuarios_historico`, `dim_dispositivos_huella`
 - [ ] Vista analítica: `vista_alertas_monitoreo`
 - [ ] Queries avanzadas: Z-score con ventanas móviles (`OVER PARTITION BY`)
-- [ ] Validación de ingesta con `BULK INSERT`
+- [x] Validación de ingesta — implementada via SQLAlchemy `to_sql()` como alternativa programática al BULK INSERT nativo, permitiendo control de tipos de datos y transformaciones previas a la carga. Decisión técnica documentada.
 
 ### Fase 2 — Generación de Datos y Motor de Riesgo
 - [ ] `data_generator.py`: transacciones sintéticas con Faker (tarjetas, DEBIN, billeteras)
