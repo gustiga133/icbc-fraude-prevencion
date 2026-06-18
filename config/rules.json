@@ -1,0 +1,39 @@
+{
+  "umbrales_decision": {
+    "APPROVE": { "max_score": 30 },
+    "REVIEW":  { "min_score": 31, "max_score": 75 },
+    "DECLINE": { "min_score": 76 }
+  },
+  "reglas": [
+    {
+      "id": "R001",
+      "descripcion": "Monto supera percentil 95 historico del usuario Y dispositivo nuevo",
+      "score": 40,
+      "activa": true
+    },
+    {
+      "id": "R002",
+      "descripcion": "Z-score del monto mayor a 3 en DEBIN o TRANSFERENCIA",
+      "score": 50,
+      "activa": true
+    },
+    {
+      "id": "R003",
+      "descripcion": "Mas de 5 transacciones del mismo usuario en los ultimos 10 minutos",
+      "score": 35,
+      "activa": true
+    },
+    {
+      "id": "R004",
+      "descripcion": "Pais de origen inconsistente con perfil historico argentino",
+      "score": 45,
+      "activa": true
+    },
+    {
+      "id": "R005",
+      "descripcion": "Monto supera 4 veces el promedio historico del usuario",
+      "score": 30,
+      "activa": true
+    }
+  ]
+}
