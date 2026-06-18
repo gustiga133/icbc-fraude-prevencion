@@ -85,3 +85,26 @@ GROUP BY
 ORDER BY
     score_maximo DESC;
 GO
+
+-- ------------------------------------------------
+-- Query 4: Estadísticas generales del motor de riesgo
+-- Resumen ejecutivo para Gerencia de Riesgos
+-- ------------------------------------------------
+USE ICBC_Fraude;
+GO
+
+SELECT
+    decision,
+    COUNT(*)                                    AS cantidad,
+    ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER(), 2) AS porcentaje,
+    ROUND(AVG(CAST(score_riesgo AS FLOAT)), 2)  AS score_promedio,
+    MAX(score_riesgo)                           AS score_maximo,
+    SUM(monto)                                  AS volumen_total,
+    SUM(CASE WHEN es_fraude_confirmado = 1 THEN 1 ELSE 0 END) AS fraudes_reales
+FROM
+    dbo.fact_transacciones
+GROUP BY
+    decision
+ORDER BY
+    decision;
+GO
