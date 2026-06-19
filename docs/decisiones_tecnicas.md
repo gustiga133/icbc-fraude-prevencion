@@ -21,3 +21,17 @@ Se optó por SQLAlchemy `to_sql()`.
 
 ### Consecuencias
 La carga es levemente más lenta que BULK INSERT nativo, pero suficiente para el volumen del proyecto (5000 registros). Para volúmenes de millones de registros se recomendaría BULK INSERT o COPY en PostgreSQL.
+
+## ADR-002: Power BI conectado a vista SQL vs importación de CSV
+
+**Fecha:** Junio 2026  
+**Estado:** Aceptada
+
+### Decisión
+Power BI se conecta directamente a `dbo.vista_alertas_monitoreo` en SQL Server 
+mediante conexión en vivo (DirectQuery o Import), no mediante archivos CSV exportados.
+
+### Justificación
+- La vista ya filtra y calcula el Z-score - Power BI consume datos listos
+- En producción el dashboard refleja el estado actual de la base operativa
+- Es la práctica estándar en entornos bancarios reales
