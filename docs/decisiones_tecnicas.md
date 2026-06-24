@@ -35,3 +35,29 @@ mediante conexión en vivo (DirectQuery o Import), no mediante archivos CSV expo
 - La vista ya filtra y calcula el Z-score - Power BI consume datos listos
 - En producción el dashboard refleja el estado actual de la base operativa
 - Es la práctica estándar en entornos bancarios reales
+
+
+## ADR-003: Workaround jerarquía de fechas en Power BI
+
+**Fecha:** Junio 2026  
+**Estado:** Aceptada
+
+### Contexto
+Power BI detecta automáticamente las columnas de tipo `DATETIME` y las convierte 
+en jerarquías de fechas (Año, Trimestre, Mes, Día), lo que impide usarlas 
+directamente como eje en gráficos de línea temporal.
+
+### Decisión
+Se creó una columna calculada DAX `Fecha Sin Hora` que extrae solo la fecha 
+sin el componente horario, desactivando además la opción 
+"Fecha/hora automática" en las opciones del archivo.
+
+### Fórmula aplicada
+```dax
+Fecha Sin Hora = DATE(YEAR(fact_transacciones[fecha_hora]), MONTH(fact_transacciones[fecha_hora]), DAY(fact_transacciones[fecha_hora]))
+```
+
+### Justificación
+Permite agrupar transacciones por día en el eje X del gráfico de evolución 
+temporal, replicando el comportamiento de `dt.date` usado en Python durante 
+el análisis exploratorio en los notebooks.

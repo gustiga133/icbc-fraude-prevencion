@@ -162,10 +162,42 @@ icbc-fraude-prevencion/
 - [ ] Panel de alertas en tiempo real (REVIEW / DECLINE)
 - [ ] Análisis de monto financiero salvado por canal
 
-### Fase 4 - Cierre y Presentación
-- [ ] README final pulido con capturas del dashboard
+### Fase 4 — Cierre y Presentación
+- [ ] README final con capturas del dashboard
 - [ ] Sincronización Notion → GitHub
-- [ ] Revisión de documentación técnica (`docs/`)
+- [ ] Revisión de documentación técnica en docs/
+
+---
+
+## Dashboard - Capturas
+
+### Página 1 - Resumen Ejecutivo
+![Dashboard Resumen Ejecutivo](docs/dashboard_pagina1.png)
+
+### Página 2 - Panel Operativo de Alertas
+![Panel Operativo](docs/dashboard_pagina2.png)
+
+---
+
+## 📈 Resultados del Sistema
+
+| Métrica | Valor |
+|---|---|
+| Total transacciones evaluadas | 5.000 |
+| Tasa de detección de fraude | 90,9% |
+| Tasa de Falsos Positivos (FPR) | 0,36% |
+| Tasa de Falsos Negativos (FNR) | 9,06% |
+| Fraudes bloqueados automáticamente | 241 de 265 |
+| Monto financiero salvado | $41.460.950,17 |
+| Transacciones aprobadas sin fricción | 4.142 (82,8%) |
+
+---
+
+## Decisiones Técnicas Documentadas
+
+- **ADR-001:** SQLAlchemy vs BULK INSERT → ver `docs/decisiones_tecnicas.md`
+- **ADR-002:** Power BI conectado a vista SQL vs CSV → ver `docs/decisiones_tecnicas.md`
+- **Workaround fechas Power BI:** columna calculada `Fecha Sin Hora` para evitar jerarquía automática → ver `docs/decisiones_tecnicas.md`
 
 ---
 
@@ -205,11 +237,11 @@ Registro continuo de todas las transacciones evaluadas por el motor.
 
 ## 👤 Autor
 
-**Alberto Gustavo Estigarribia** - Data Analyst / Data Engineer  
+**Alberto Gustavo Estigarribia** - Data Analyst / Data Engineer Junior 
 📍 Buenos Aires, Argentina  
-🔗 [LinkedIn](#) · [GitHub](#)
+🔗 [https://www.linkedin.com/in/alberto-gustavo-estigarribia-59b947238] (#) · [https://github.com/gustiga133/icbc-fraude-prevencion](#)
 
-> *Proyecto desarrollado como caso de uso profesional para postulación a posición de Analista SR de Prevención de Fraudes.*
+> *Proyecto desarrollado como caso de uso profesional para postulación a posición de Analista de Prevención de Fraudes.*
 
 ---
 
